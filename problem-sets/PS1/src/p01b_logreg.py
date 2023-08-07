@@ -15,6 +15,9 @@ def main(train_path, eval_path, pred_path):
     x_train, y_train = util.load_dataset(train_path, add_intercept=True)
 
     # *** START CODE HERE ***
+    clf = LogisticRegression()
+    clf.fit(x_train,y_train)
+    
     # *** END CODE HERE ***
 
 

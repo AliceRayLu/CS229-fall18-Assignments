@@ -1,0 +1,36 @@
+\documentclass[UTF8]{article}
+\usepackage[hmargin=1.25in,vmargin=1in]{geometry}
+\usepackage{amsmath}
+% 导言区
+\title{CS 229, Fall 2018\protect\\Problem Set 1}
+
+\begin{document}
+\maketitle
+\section{Linear Classifiers (logistic regression and GDA)}
+\subsection{a}
+
+\begin{equation*}
+    \begin{split}
+        J(\theta) & = -\frac{1}{m}\sum_{i=1}^{m}(y^ilog(g(\theta^Tx))+(1-y^i)log(1-g(\theta^Tx)))\\
+        g'(x) & = g(x)(1-g(x))\\
+        \frac{\partial J(\theta)}{\partial \theta_i} & = -\frac{1}{m}(y\frac{1}{g(\theta^Tx)}-(1-y)\frac{1}{1-g(\theta^Tx)})\frac{\partial g(\theta^Tx)}{\partial \theta_i}\\
+        & = -\frac{1}{m}(y\frac{1}{g(\theta^Tx)}-(1-y)\frac{1}{1-g(\theta^Tx)})g(\theta^Tx)(1-g(\theta^Tx))\frac{\partial \theta^Tx}{\partial \theta_i}\\
+        & = -\frac{1}{m}(y-g(\theta^Tx))x_i\\
+        \frac{\partial^2 J(\theta)}{\partial \theta_i\partial \theta_j}
+        & = \frac{1}{m}x_i\frac{\partial g(\theta^Tx)}{\partial \theta_j}\\
+        & = \frac{1}{m}x_ix_jg(\theta^Tx)(1-g(\theta^Tx))\\
+        H &= XX^Tg(\theta^Tx)(1-g(\theta^Tx))
+    \end{split}
+\end{equation*}
+
+So, $z^THz = (z^Tx)^2g(\theta^Tx)(1-g(\theta^Tx))$ As we known, $g(\theta^Tx)(1-g(\theta^Tx))$ is a scalar which $>0$, $z^Tx$ is also a scalar.
+then we can conclude $z^THz \leq 0$
+
+\subsection{b}
+
+see \textit{p01b\_logreg.py} for detail
+
+\subsection{c}
+
+
+\end{document}
